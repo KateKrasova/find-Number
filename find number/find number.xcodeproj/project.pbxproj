@@ -14,6 +14,7 @@
 		21A7ABCC297FD541006EAC7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21A7ABCA297FD541006EAC7D /* LaunchScreen.storyboard */; };
 		21A7ABD5297FDA43006EAC7D /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21A7ABD4297FDA43006EAC7D /* View.swift */; };
 		21A7ABD8297FE6C8006EAC7D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 21A7ABD7297FE6C8006EAC7D /* SnapKit */; };
+		21A7ABDB29819E10006EAC7D /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 21A7ABDA29819E10006EAC7D /* Then */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21A7ABD8297FE6C8006EAC7D /* SnapKit in Frameworks */,
+				21A7ABDB29819E10006EAC7D /* Then in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +97,7 @@
 			name = "find number";
 			packageProductDependencies = (
 				21A7ABD7297FE6C8006EAC7D /* SnapKit */,
+				21A7ABDA29819E10006EAC7D /* Then */,
 			);
 			productName = "find number";
 			productReference = 21A7ABBC297FD540006EAC7D /* find number.app */;
@@ -126,6 +129,7 @@
 			mainGroup = 21A7ABB3297FD540006EAC7D;
 			packageReferences = (
 				21A7ABD6297FE6C8006EAC7D /* XCRemoteSwiftPackageReference "SnapKit" */,
+				21A7ABD929819E10006EAC7D /* XCRemoteSwiftPackageReference "Then" */,
 			);
 			productRefGroup = 21A7ABBD297FD540006EAC7D /* Products */;
 			projectDirPath = "";
@@ -374,6 +378,14 @@
 				minimumVersion = 5.6.0;
 			};
 		};
+		21A7ABD929819E10006EAC7D /* XCRemoteSwiftPackageReference "Then" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devxoul/Then";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -381,6 +393,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 21A7ABD6297FE6C8006EAC7D /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		21A7ABDA29819E10006EAC7D /* Then */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21A7ABD929819E10006EAC7D /* XCRemoteSwiftPackageReference "Then" */;
+			productName = Then;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

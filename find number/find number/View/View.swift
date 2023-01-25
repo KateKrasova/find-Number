@@ -7,78 +7,83 @@
 
 import UIKit
 import SnapKit
+import Then
 
 class View: UIView {
+    // MARK: - Views
     
-    var randomNumber = Int.random(in: 1...50)
-    var round = 1
-    var points = 0
+    lazy var mainLabel = UILabel().then {
+        $0.text = "🤖 Lets start!"
+        $0.font = UIFont(name: "Hoefler Text", size: 35)
+        $0.textColor = UIColor(red: 212/255, green: 163/255, blue: 115/255, alpha: 1)
+    }
+    
+    lazy var slider = UISlider().then {
+        $0.minimumValue = 1
+        $0.maximumValue = 50
+        $0.value = 25
+        $0.minimumTrackTintColor = UIColor(red: 204/255, green: 213/255, blue: 174/255, alpha: 1)
+        $0.maximumTrackTintColor = UIColor(red: 233/255, green: 237/255, blue: 201/255, alpha: 1)
+        $0.thumbTintColor = UIColor(red: 212/255, green: 163/255, blue: 115/255, alpha: 1)
+    }
+    
+    lazy var numberLabel = UILabel().then{
+        $0.font = UIFont(name: "Hoefler Text", size: 35)
+    }
+    
+    lazy var button = UIButton(type: .system).then{
+        $0.backgroundColor = UIColor(red: 233/255, green: 237/255, blue: 201/255, alpha: 1)
+        $0.setTitle("Press to start", for: .normal)
+        $0.titleLabel?.font = UIFont(name: "Hoefler Text", size: 20)
+        $0.setTitleColor(.black, for: .normal)
+        $0.layer.cornerRadius = 10
+        $0.titleLabel?.textAlignment = .center
+    }
+    
+    // MARK: - LifeCycle
     
     init() {
         super.init(frame: .zero)
+        confugure()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Private Methods
+    
+    func confugure() {
         backgroundColor = UIColor(red: 254/255, green: 250/255, blue: 224/255, alpha: 1)
-        
-        let mainLabel = UILabel()
-        mainLabel.text = "🤖 Lets start!"
-        mainLabel.font = UIFont(name: "Hoefler Text", size: 35)
-        mainLabel.textColor = UIColor(red: 212/255, green: 163/255, blue: 115/255, alpha: 1)
         addSubview(mainLabel)
+        addSubview(slider)
+        addSubview(numberLabel)
+        addSubview(button)
+    }
+    
+    func setupConstraints() {
         mainLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalToSuperview().inset(175)
+            $0.bottom.equalTo(slider).inset(150)
         }
         
-        let slider = UISlider()
-        slider.minimumValue = 1
-        slider.maximumValue = 50
-        slider.value = 25
-        slider.minimumTrackTintColor = UIColor(red: 204/255, green: 213/255, blue: 174/255, alpha: 1)
-        slider.maximumTrackTintColor = UIColor(red: 233/255, green: 237/255, blue: 201/255, alpha: 1)
-        slider.thumbTintColor = UIColor(red: 212/255, green: 163/255, blue: 115/255, alpha: 1)
-        addSubview(slider)
         slider.snp.makeConstraints {
             $0.center.equalToSuperview()
             $0.left.equalToSuperview().inset(30)
             $0.right.equalToSuperview().inset(30)
         }
         
-        let numberLabel = UILabel()
-        numberLabel.text = String(randomNumber)
-        numberLabel.font = UIFont(name: "Hoefler Text", size: 50)
-        addSubview(numberLabel)
         numberLabel.snp.makeConstraints {
             $0.centerX.equalToSuperview()
-            $0.top.equalTo(mainLabel).inset(100)
+            $0.bottom.equalTo(slider).inset(70)
         }
         
-        let button = UIButton(type: .system)
-        button.backgroundColor = UIColor(red: 233/255, green: 237/255, blue: 201/255, alpha: 1)
-        button.setTitle("Next round", for: .normal)
-        button.titleLabel?.font = UIFont(name: "Hoefler Text", size: 20)
-        button.setTitleColor(.black, for: .normal)
-        button.layer.cornerRadius = 10
-        button.titleLabel?.textAlignment = .center
-        addSubview(button)
         button.snp.makeConstraints {
             $0.centerX.equalToSuperview()
             $0.width.equalTo(150)
-            $0.height.equalTo(70)
-            $0.top.equalTo(slider).inset(200)
-            
+            $0.height.equalTo(50)
+            $0.top.equalTo(slider).inset(120)
         }
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
     }
-    
-    @objc private func buttonTapped() {
-        print("Button tapped")
-        
-    }
-    
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
 }
